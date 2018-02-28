@@ -8,11 +8,18 @@
  * @return {number[]}
  */
 
-var twoSum = function(nums, target) {
-  var a = [];
-  for (var i = 0, len = nums.length; i < len; i++) {
-    var tmp = target - nums[i];
-    if (a[tmp] !== undefined) return [a[tmp], i];
-    a[nums[i]] = i;
+function twoSums(nums, target) {
+  let res = [];
+
+  for(let i = 0; i < nums.length; i++){
+    let temp = target - nums[i];
+    if(nums.indexOf(temp) > -1) {
+      res = [i, nums.indexOf(temp)];
+      return res;
+    }
   }
-};
+
+  return res;
+}
+
+twoSums([2,3,7,9,11], 20); // [3,4]
