@@ -18,10 +18,26 @@ var isValid = function(s) {
     else {
       if (s[i] === target[sta[sta.length - 1]])
         sta.pop();
-      else 
+      else
         sta.push(s[i]);
     }
   }
 
   return !sta.length;
+};
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+  if(s.length % 2 !== 0) return false;
+
+  let len = Math.round(s.length / 2);
+
+  for(let i=0; i< len; i++) {
+    s = s.replace('()','').replace('{}', '').replace('[]', '');
+  }
+
+  return s.length === 0;
 };

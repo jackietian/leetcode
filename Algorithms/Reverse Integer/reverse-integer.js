@@ -17,7 +17,7 @@ var reverse = function(x) {
   var maxn = (1 << 30) * 2 - 1;
   var ans;
   var arr = x.toString().split('');
-  if (x < 0) 
+  if (x < 0)
     arr.shift();  // remove '-'
   ans = Number(arr.reverse().join(''));
   if (x < 0)
@@ -29,3 +29,23 @@ var reverse = function(x) {
     return ans;
 };
 
+
+//Given a 32-bit signed integer, reverse digits of an integer.
+// 123 => 321
+
+function reverse(num) {
+  if(num > 0) {
+    let numArr = num.toString().split('');
+    return parseInt(numArr.reverse().join(''),10);
+  } else {
+    let absNum = Math.abs(num);
+    let numArr = absNum.toString().split('');
+    return parseInt(numArr.reverse().join(''),10) * -1;
+  }
+}
+
+reverse(123); // 321
+
+reverse(120); // 21
+
+reverse(-123); // -321

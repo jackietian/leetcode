@@ -26,3 +26,33 @@ var longestCommonPrefix = function(strs) {
 
   return ans;
 };
+
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+var longestCommonPrefix = function(strs) {
+    if(strs.length === 0) return '';
+  let res = '';
+  let shortestStrLength = strs[0].length;
+  strs.forEach(str => {
+    shortestStrLength = str.length <= shortestStrLength ? str.length : shortestStrLength;
+  })
+
+  console.log(shortestStrLength);
+  for(let i = 0; i < shortestStrLength; i++) {
+    let a = strs[0][i];
+
+    let found = strs.every(str => {
+      return str[i] === a;
+    });
+
+    if(!found) break;
+    res += a;
+  }
+
+  return res;
+};
+
+
+longestCommonPrefix(['abc', 'abc', 'abcd']); // abc
