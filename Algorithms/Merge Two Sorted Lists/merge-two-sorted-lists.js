@@ -36,3 +36,36 @@ var mergeTwoLists = function(l1, l2) {
 
   return ans[0];
 };
+
+
+
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+
+function mergeTwoLists(l1, l2) {
+  let res = [];
+  while(l1) {
+    res.push(new ListNode(l1.val));
+    l1 = l1.next;
+  }
+
+  while(l2) {
+    res.push(new ListNode(l2.val));
+    l2 = l2.next;
+  }
+
+  res.sort((a, b) => a.val - b.val);
+  console.log(res);
+  for(let i = 0; i < res.length - 1; i++) {
+    console.log(res[5]);
+    res[i].next = res[i+1];
+  }
+  return res[0];
+}
+
+let l1 = {val: 1, next: {val:2, next: {val:3, next: null}}};
+let l2 = {val: 2, next: {val:3, next: {val:4, next: null}}};
+
+console.log(mergeTwoLists(l1, l2));
