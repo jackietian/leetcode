@@ -14,16 +14,16 @@ var threeSum = function(nums) {
   let len = nums.length
 
   // enumerate the array, and assume the item to be the smallest one
-  for (let i = 0; i < len; i++ ) { 
+  for (let i = 0; i < len; i++ ) {
 
     // have already enumerate the item as the smallest one among the three
     // then continue
-    if (i && nums[i] === nums[i - 1]) continue 
+    if (i && nums[i] === nums[i - 1]) continue
 
     // the sum of another two should be
     let target = -nums[i]
 
-    // the indexes of another two 
+    // the indexes of another two
     let [start, end] = [i + 1, len - 1]
 
     while (start < end) {
@@ -35,9 +35,9 @@ var threeSum = function(nums) {
         start++
       } else {
         ans.push([nums[i], nums[start], nums[end]])
-        
+
         // remove the duplication
-        while (nums[start] === nums[start + 1]) 
+        while (nums[start] === nums[start + 1])
           start++
         start++
 
@@ -50,4 +50,59 @@ var threeSum = function(nums) {
   }
 
   return ans
+}
+
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var threeSum = function(nums) {
+    if(nums.length < 3) return [];
+    //edge cases
+    if(nums.length === 3) {
+      if(nums.reduce((a,b) => a+ b) === 0) {
+        return [nums];
+      }
+    }
+    let res = [];
+    nums = nums.sort((a,b) => a-b);
+    let n = nums.length;
+    for(let i = 0; i < n - 3; i++){
+      let a = nums[i];
+      let start = i+1;
+      let end = n-1;
+      while(start < end) {
+        b = nums[start];
+        c = nums[end];
+        if(a + b + c === 0) {
+            res.push([a,b,c]);
+          if(b == nums[start+1]) { // skip the duplicates
+            start++;
+          } else {
+            end--;
+          }
+        }else if(a + b + c >0) {
+            end--;
+          } else {
+            start++;
+          }
+      }
+    }
+    return res;
+};
+
+function contains(arr, item) {
+    let found = false;
+    arr.forEach(arrItem => {
+        if(arrItem.sort((a,b) => a-b).join('') === item.sort((a,b) => a-b).join('')) {
+          found = true
+        }
+    })
+
+    return found;
+}
+
+function checkDuplicateTriplets(a,b,c) {
+    return a === b && b === c && c === a;
 }
