@@ -14,6 +14,7 @@ var merge = function(nums1, m, nums2, n) {
   nums1.length = m,
   nums2.length = n;
 
+  //func.apply(thisArg, [argsArray])
   Array.prototype.push.apply(nums1, nums2);
   nums1.sort(function(a, b) {
     return a - b;

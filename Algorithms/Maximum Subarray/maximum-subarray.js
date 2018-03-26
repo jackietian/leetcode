@@ -20,3 +20,35 @@ var maxSubArray = function(nums) {
 
   return maxn;
 };
+
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSubArray = function(nums) {
+    // find subarray from length 1 to nums.length
+    let max = -Number.MAX_VALUE;
+    let subArray = [];
+
+    for(let i = 0; i< nums.length; i++){
+      for(let j = i+1; j <= nums.length; j++) {
+        let tempArr = nums.slice(i, j);
+        let tempSum = reducer(tempArr);
+        if(tempSum > max) {
+          max = tempSum;
+          subArray = tempArr;
+        }
+      }
+    }
+
+    return max;
+};
+
+// sum of array items
+function reducer(arr) {
+  return arr.reduce((a,c) => a + c, 0);
+}
+
+// maxSubArray([-2,1,-3,4,-1,2,1,-5,4]);
+maxSubArray([1]);

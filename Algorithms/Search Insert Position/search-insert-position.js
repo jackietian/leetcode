@@ -22,3 +22,26 @@ var searchInsert = function(nums, target) {
     if (nums[i - 1] < target && target < nums[i])
       return i;
 };
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var searchInsert = function(nums, target) {
+    let index = nums.indexOf(target);
+    if(index >= 0) {
+      return index;
+    }else {
+      if(target > nums[nums.length - 1]) return nums.length;
+
+      for(let i= 0; i < nums.length; i++) {
+        if(target <= nums[i]) {
+          return i;
+        }
+      }
+    }
+};
+
+searchInsert([1,2,3,5], 2); // 1

@@ -18,4 +18,15 @@ var lengthOfLastWord = function(s) {
     if (i === 0)
       return s.length - i;
   }
-}; 
+};
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLastWord = function(s) {
+  let arr = s.trim().split(' ');
+  return arr.length >= 1 ? arr[arr.length -1].length : 0;
+};
+
+lengthOfLastWord("a ");
